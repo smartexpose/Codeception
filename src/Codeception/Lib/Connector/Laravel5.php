@@ -171,7 +171,7 @@ class Laravel5 extends Client
 
         // Set the request instance for the application,
         if (is_null($request)) {
-            $appConfig = require $this->module->config['project_dir'] . 'config/app.php';
+            $appConfig = require $this->module->config['bootstrap_file'];
             $request = SymfonyRequest::create($appConfig['url']);
         }
         $this->app->instance('request', Request::createFromBase($request));
@@ -230,7 +230,7 @@ class Laravel5 extends Client
      */
     private function loadApplication()
     {
-        $app = require $this->module->config['bootstrap_file'];
+        $app = require $this->module->config['app'];
         $app->loadEnvironmentFrom($this->module->config['environment_file']);
         $app->instance('request', new Request());
 

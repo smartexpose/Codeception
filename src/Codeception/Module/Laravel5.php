@@ -129,7 +129,8 @@ class Laravel5 extends Framework implements ActiveRecord, PartedModule
                 'run_database_seeder' => false,
                 'database_seeder_class' => '',
                 'environment_file' => '.env',
-                'bootstrap' => 'bootstrap' . DIRECTORY_SEPARATOR . 'app.php',
+                'bootstrap' => '',
+                'app' => '',
                 'root' => '',
                 'packages' => 'workbench',
                 'vendor_dir' => 'vendor',
@@ -145,6 +146,7 @@ class Laravel5 extends Framework implements ActiveRecord, PartedModule
         $projectDir .= $this->config['root'];
 
         $this->config['project_dir'] = $projectDir;
+        $this->config['app'] = $projectDir . $this->config['app'];
         $this->config['bootstrap_file'] = $projectDir . $this->config['bootstrap'];
 
         parent::__construct($container);
